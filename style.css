@@ -3,8 +3,8 @@
     --color-700: rgb(59, 71, 198);
     --color-400: rgb(118, 148, 228);
     --color-black: rgb(16, 16, 16);
-    --color-dark: rgb(63, 63, 63);
-    --color-light: hsl(0, 0%, 95%);
+    --color-primary-neutral: rgb(63, 63, 63);
+    --color-secondary-neutral: rgb(242, 242, 242);
     --font-main: Inter, sans-serif;
     --font-alt: Georgia;
 }
@@ -13,15 +13,22 @@
     margin: 0;
     padding: 0;
     font-family: var(--font-main);
-    color: var(--color-light);
+    color: var(--color-secondary-neutral);
     box-sizing: border-box;
 }
 
 body {
     background-color: var(--color-black);
-    height: 200vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 ::-webkit-scrollbar {
@@ -44,16 +51,6 @@ a {
     transition: all 300ms ease;
 }
 
-#sidebar-active {
-    display: none;
-}
-
-.open-sidebar-button,
-.close-sidebar-button {
-    display: none;
-    padding: 1rem;
-}
-
 nav {
     position: sticky;
     top: 0;
@@ -63,13 +60,13 @@ nav {
     background: linear-gradient(
         to right,
         transparent,
-        color-mix(in srgb, var(--color-light) 5%, transparent),
+        color-mix(in srgb, var(--color-secondary-neutral) 5%, transparent),
         transparent
     );
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 
 .nav-logo {
@@ -100,7 +97,6 @@ nav .nav-items {
 }
 
 nav .nav-items a {
-    text-decoration: none;
     height: 2.5rem;
     display: flex;
     align-items: center;
@@ -109,8 +105,6 @@ nav .nav-items a {
 }
 
 nav .nav-items a li {
-    text-decoration: none;
-    list-style: none;
     font-weight: 400;
 }
 
@@ -125,12 +119,6 @@ nav .nav-mode {
     height: 2.5rem;
     padding: 0.5rem;
     margin-left: auto;
-    /* border: 1px solid var(--color-400); */
-}
-
-nav .nav-mode svg {
-    height: 1.5rem;
-    margin-right: 0.75rem;
 }
 
 .nav-border {
@@ -144,7 +132,7 @@ nav .nav-mode svg {
         color-mix(in srgb, var(--color-700) 50%, transparent),
         transparent
     );
-    color: var(--color-light);
+    color: var(--color-secondary-neutral);
 }
 
 #profile {
@@ -172,7 +160,7 @@ nav .nav-mode svg {
     color: var(--color-700);
 }
 
-.profile-info h6 {
+h6 {
     text-transform: uppercase;
     font-size: 0.8rem;
     color: var(--color-400);
@@ -184,7 +172,7 @@ nav .nav-mode svg {
 
 .profile-info em {
     margin-top: 2rem;
-    border-left: 3px solid var(--color-light);
+    border-left: 3px solid var(--color-secondary-neutral);
     padding-left: 2rem;
     font-size: 1.5rem;
     font-family: var(--font-alt);
@@ -207,6 +195,29 @@ nav .nav-mode svg {
     object-position: center -100px;
 }
 
+@media (max-width: 768px) {
+    nav .nav-items {
+        display: none;
+    }
+
+    #profile {
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 175vh;
+    }
+
+    .profile-info {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 75vh;
+    }
+
+    .profile-image {
+        width: 100%;
+        min-height: 50vh;
+    }
+}
+
 .skills-languages img {
     height: 2rem;
 }
@@ -221,25 +232,245 @@ nav .nav-mode svg {
         color-mix(in srgb, var(--color-700) 50%, transparent),
         transparent
     );
-    color: var(--color-light);
+    color: var(--color-secondary-neutral);
+}
+
+.skills-languages {
+    display: flex;
+    text-align: initial;
+    flex-wrap: wrap;
+}
+
+#skills {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.head h6 {
+    margin-top: 4rem;
+}
+
+h2 {
+    color: var(--color-secondary-neutral);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card {
+    min-width: 15rem;
+    max-width: 25rem;
+    border: 2px solid var(--color-primary-neutral);
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary-neutral) 5%,
+        transparent
+    );
+}
+
+.card h3 {
+    color: var(--color-700);
+    margin-bottom: 0.5rem;
+}
+
+.skills-technical article {
+    margin: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+}
+
+.skills-technical article svg,
+.skills-technical article div {
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+}
+
+.skills-technical article span {
+    margin-left: 3rem;
+    font-size: 1rem;
+}
+
+.skills-languages ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.skills-languages article {
+    align-items: center;
+    display: flex;
+    width: 10rem;
+    padding: 1rem;
+}
+
+.skills-languages article h4 {
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+#about-me {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-me .misc {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.misc div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 2px solid var(--color-primary-neutral);
+    border-bottom: 2px solid var(--color-primary-neutral);
+    padding: 1rem;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contacts h3 {
+    margin: 1rem;
 }
 
 .about-me-contact {
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 6rem;
 }
 
+.about-me-contact .lone,
 .about-me-contact li a {
-    text-decoration: none;
+    width: 15rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top: 1px solid var(--color-primary-neutral);
+    padding-top: 1rem;
 }
 
-/* @media (max-width: 550px) {
-    .nav-items {
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        right: 0;
-        z-index: 10;
-        width: 10rem;
-    }
+.about-me-contact li a span {
+    color: var(--color-700);
+}
+
+.about-me-contact li:last-child a {
+    border-bottom: 1px solid var(--color-primary-neutral);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.project-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.project img {
+    width: 100%;
+}
+
+.project {
+    min-width: 10rem;
+    max-width: 20rem;
+    height: 25rem;
+    border: 2px solid var(--color-primary-neutral);
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary-neutral) 5%,
+        transparent
+    );
+}
+
+.project a {
+    margin-bottom: auto;
+}
+
+/* .checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.label {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 0.75rem;
+}
+
+.label svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.sun {
+    display: none;
+}
+
+#darkmode-toggle:checked + .label .sun {
+    display: block;
+}
+#darkmode-toggle:checked + .label .moon {
+    display: none;
+}
+#darkmode-toggle:checked ~ body {
+    background-color: var(--color-secondary-neutral);
+}
+
+#darkmode-toggle:checked + .card {
+    border: 2px solid var(--color-secondary-neutral);
+}
+
+#darkmode-toggle:checked + .project {
+    border: 2px solid var(--color-secondary-neutral);
 } */
