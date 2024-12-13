@@ -1,3 +1,245 @@
+:root {
+    --color-900: rgb(45, 51, 123);
+    --color-700: rgb(59, 71, 198);
+    --color-400: rgb(118, 148, 228);
+    --color-black: rgb(16, 16, 16);
+    --color-dark: rgb(63, 63, 63);
+    --color-light: hsl(0, 0%, 95%);
+    --font-main: Inter, sans-serif;
+    --font-alt: Georgia;
+}
+
 * {
-    font-family: Inter, Calibri;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    color: var(--color-light);
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-black);
+    height: 200vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+        transparent,
+        var(--color-700),
+        transparent
+    );
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+a {
+    transition: all 300ms ease;
+}
+
+#sidebar-active {
+    display: none;
+}
+
+.open-sidebar-button,
+.close-sidebar-button {
+    display: none;
+    padding: 1rem;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 3rem;
+    list-style: none;
+    background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in srgb, var(--color-light) 5%, transparent),
+        transparent
+    );
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    position: inherit;
+    font-weight: 600;
+    margin-right: auto;
+}
+
+.nav-logo img {
+    height: 1.5rem;
+    margin-right: 0.75rem;
+}
+
+.nav-logo span {
+    font-size: 1.2rem;
+}
+
+nav .nav-items {
+    width: auto;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav .nav-items a {
+    text-decoration: none;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem 0.25rem;
+}
+
+nav .nav-items a li {
+    text-decoration: none;
+    list-style: none;
+    font-weight: 400;
+}
+
+nav .nav-items a:hover li {
+    color: var(--color-400);
+}
+
+nav .nav-mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 0.5rem;
+    margin-left: auto;
+    /* border: 1px solid var(--color-400); */
+}
+
+nav .nav-mode svg {
+    height: 1.5rem;
+    margin-right: 0.75rem;
+}
+
+.nav-border {
+    position: sticky;
+    width: 100%;
+    top: 3rem;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in srgb, var(--color-700) 50%, transparent),
+        transparent
+    );
+    color: var(--color-light);
+}
+
+#profile {
+    top: 3rem;
+    height: calc(100vh - 3rem);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.profile-info h1 {
+    font-size: 42px;
+    margin: 1rem 0;
+}
+
+.profile-info h1 span {
+    color: var(--color-700);
+}
+
+.profile-info h6 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--color-400);
+}
+
+.profile-info p {
+    line-height: 1.5rem;
+}
+
+.profile-info em {
+    margin-top: 2rem;
+    border-left: 3px solid var(--color-light);
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    font-family: var(--font-alt);
+    color: var(--color-400);
+}
+
+.profile-image {
+    right: 0;
+    height: 100%;
+    width: 50%;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image img {
+    object-fit: cover;
+    height: 160%;
+    object-position: center -100px;
+}
+
+.skills-languages img {
+    height: 2rem;
+}
+
+.separator {
+    width: 100%;
+    top: 3rem;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in srgb, var(--color-700) 50%, transparent),
+        transparent
+    );
+    color: var(--color-light);
+}
+
+.about-me-contact {
+    list-style: none;
+}
+
+.about-me-contact li a {
+    text-decoration: none;
+}
+
+@media (max-width: 550px) {
+    .nav-items {
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        width: 10rem;
+    }
 }
